@@ -2,6 +2,7 @@ import argparse
 import os
 from getpass import getpass
 from create_project_structure import create_project_structure
+from import_site_directory import import_site_directory
 
 
 # Scaffold the docker environment to clone a live website
@@ -34,6 +35,7 @@ def get_inputs():
 
     backup_url = input("Enter backup URL (leave blank to skip): ")
     site_repo = input("Enter site repo URL (leave blank to skip): ")
+    theme_repo = None
     if site_repo:
         theme_repo = input("Enter theme repo URL (leave blank to skip): ")
 
@@ -54,5 +56,10 @@ def get_inputs():
 if __name__ == "__main__":
     inputs = get_inputs()
     create_project_structure(inputs)
-
+    with open(".gitignore", "a+") as f:
+        f.write(f"/{inputs['project_name']}")
+    if inputs["site_repo"]:
+        import_site_directory(inputs)
+    # if inputs["theme_repo"]:
+        # import theme repo
     
