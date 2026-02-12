@@ -58,8 +58,13 @@ if __name__ == "__main__":
     create_project_structure(inputs)
     with open(".gitignore", "a+") as f:
         f.write(f"/{inputs['project_name']}")
+<<<<<<< HEAD
     if inputs["site_repo"]:
         import_site_directory(inputs)
+=======
+    # if inputs["site_repo"]:
+    #     import_site_directory(inputs)
+>>>>>>> 79ef0dcf1df49677c3b30454ace64d5f4abc58b7
     # if inputs["theme_repo"]:
         # import theme repo
     
